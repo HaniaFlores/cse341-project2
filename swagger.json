@@ -8,7 +8,6 @@
   "host": "project2-i6kb.onrender.com",
   "basePath": "/",
   "schemes": [
-    "http",
     "https"
   ],
   "paths": {
@@ -32,7 +31,7 @@
         }
       }
     },
-    "/users/": {
+    "/users": {
       "post": {
         "tags": [
           "Users"
@@ -174,7 +173,7 @@
         }
       }
     },
-    "/tasks/": {
+    "/tasks": {
       "post": {
         "tags": [
           "Tasks"
