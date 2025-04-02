@@ -5,7 +5,7 @@
     "description": "To-Do App",
     "version": "1.0.0"
   },
-  "host": "https://to-do-app-q1r0.onrender.com/",
+  "host": "https://to-do-app-q1r0.onrender.com",
   "basePath": "/",
   "schemes": [
     "http",
