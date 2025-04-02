@@ -21,7 +21,7 @@ app.use('/tasks', require('./routes/tasks.js'));
 
 // TEST
 app.get('/', (req, res) => {
-    res.send('Hello World');
+    res.send('Welcome to the To-Do App.');
 })
 
 
