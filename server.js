@@ -1,9 +1,11 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongodb = require('./config/database.js');
+const cors = require('cors');
 const app = express();
 
 const port = process.env.PORT || 3000;
+app.use(cors());
 app.use(bodyParser.json());
 
 app.use((req, res, next) => {

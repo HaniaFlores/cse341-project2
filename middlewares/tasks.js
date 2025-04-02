@@ -11,7 +11,7 @@ const validateTask = [
         .withMessage('Priority must be Low, Medium, or High.'),
 
     body('dueDate')
-        .isISO8601().toDate()
+        .matches(/^\d{4}-\d{2}-\d{2}$/)
         .withMessage('Due date must be in YYYY-MM-DD format.'),
 
     body('category')

@@ -15,7 +15,7 @@ const createTask = async (req, res) => {
             status: req.body.status,
             category: req.body.category,
             assignedUser: req.body.assignedUser,
-            createdAt: new Date()
+            createdAt: new Date().toISOString().split('T')[0]
         };
         const response = await mongodb.getDatabase().db().collection('tasks').insertOne(task);
         res.status(201).json({ message: 'Task created successfully' });
@@ -86,7 +86,7 @@ const deleteTask = async (req, res) => {
     try {
         const taskId = new ObjectId(req.params.id);
         const response = await mongodb.getDatabase().db().collection('tasks').deleteOne({ _id: taskId });
-        res.status(204).send().json({message: 'Contact deleted successfully'});
+        res.status(204).send()
     } catch (error) {
         res.status(400).json({ message: error.message || 'Some error occurred while deleting the user.' });
     }
