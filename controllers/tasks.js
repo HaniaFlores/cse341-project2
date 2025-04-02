@@ -2,7 +2,10 @@ const mongodb = require('../config/database.js');
 const ObjectId = require('mongodb').ObjectId;
 
 const createTask = async (req, res) => {
-    /** #swagger.tags = ['Tasks'] */
+/**
+ * #swagger.tags = ['Tasks']
+ * #swagger.description = 'This endpoint creates a new task.'
+*/
     try {
         const task = {
             title: req.body.title,
@@ -22,7 +25,10 @@ const createTask = async (req, res) => {
 };
 
 const getAllTasks = async (req, res) => {
-    /** #swagger.tags = ['Tasks'] */
+/**
+ * #swagger.tags = ['Tasks']
+ * #swagger.description = 'This endpoint gets all tasks from the database.'
+*/
     const response = await mongodb.getDatabase().db().collection('tasks').find();
     response.toArray().then((tasks) => {
         res.setHeader('Content-Type', 'application/json');
@@ -31,7 +37,10 @@ const getAllTasks = async (req, res) => {
 };
 
 const getSingleTask = async (req, res) => {
-    /** #swagger.tags = ['Tasks'] */
+/**
+ * #swagger.tags = ['Tasks']
+ * #swagger.description = 'This endpoint gets a task by id.'
+*/
     const taskId = new ObjectId(req.params.id);
     const response = await mongodb.getDatabase().db().collection('tasks').find({_id: taskId});
     response.toArray().then((tasks) => {
@@ -41,7 +50,10 @@ const getSingleTask = async (req, res) => {
 };
 
 const updateTask = async (req, res) => {
-    /** #swagger.tags = ['Tasks'] */
+/**
+ * #swagger.tags = ['Tasks']
+ * #swagger.description = 'This endpoint updates a task.'
+*/
     try {
         const taskId = new ObjectId(req.params.id);
         const task = {
@@ -67,7 +79,10 @@ const updateTask = async (req, res) => {
 };
 
 const deleteTask = async (req, res) => {
-    /** #swagger.tags = ['Tasks'] */
+/**
+ * #swagger.tags = ['Tasks']
+ * #swagger.description = 'This endpoint deletes a task.'
+*/
     try {
         const taskId = new ObjectId(req.params.id);
         const response = await mongodb.getDatabase().db().collection('tasks').deleteOne({ _id: taskId });

@@ -2,7 +2,10 @@ const mongodb = require('../config/database');
 const ObjectId = require('mongodb').ObjectId;
 
 const createUser = async (req, res) => {
-    /** #swagger.tags = ['Users'] */
+/**
+ * #swagger.tags = ['Users']
+ * #swagger.description = 'This endpoint creates a new user.'
+*/
     try {
         const user = {
             firstName: req.body.firstName,
@@ -19,7 +22,10 @@ const createUser = async (req, res) => {
 };
 
 const getAllUsers = async (req, res) => {
-    /** #swagger.tags = ['Users'] */
+/**
+ * #swagger.tags = ['Users']
+ * #swagger.description = 'This endpoint gets all users from the database.'
+*/
     const response = await mongodb.getDatabase().db().collection('users').find();
     response.toArray().then((users) => {
         res.setHeader('Content-Type', 'application/json');
@@ -28,7 +34,10 @@ const getAllUsers = async (req, res) => {
 };
 
 const getSingleUser = async (req, res) => {
-    /** #swagger.tags = ['Users'] */
+/**
+ * #swagger.tags = ['Users']
+ * #swagger.description = 'This endpoint gets a user by id.'
+*/
     const userId = new ObjectId(req.params.id);
     const response = await mongodb.getDatabase().db().collection('users').find({_id: userId});
     response.toArray().then((users) => {
@@ -38,7 +47,10 @@ const getSingleUser = async (req, res) => {
 };
 
 const updateUser = async (req, res) => {
-    /** #swagger.tags = ['Users'] */
+/**
+ * #swagger.tags = ['Users']
+ * #swagger.description = 'This endpoint updates user information.'
+*/
     const userId = new ObjectId(req.params.id);
     const user = {
         firstName: req.body.firstName,
@@ -58,7 +70,10 @@ const updateUser = async (req, res) => {
 };
 
 const deleteUser = async (req, res) => {
-    /** #swagger.tags = ['Users'] */
+/**
+ * #swagger.tags = ['Users']
+ * #swagger.description = 'This endpoint deletes a user.'
+*/
     const userId = new ObjectId(req.params.id);
     const response = await mongodb.getDatabase().db().collection('users').deleteOne({ _id: userId });
 

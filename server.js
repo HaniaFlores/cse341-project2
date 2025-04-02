@@ -16,14 +16,7 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use('/users', require('./routes/users.js'));
-app.use('/tasks', require('./routes/tasks.js'));
-
-// TEST
-app.get('/', (req, res) => {
-    res.send('Welcome to the To-Do App.');
-})
-
+app.use('/', require('./routes'));
 
 mongodb.initDb((err) => {
     if (err) {
