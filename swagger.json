@@ -8,8 +8,8 @@
   "host": "to-do-app-q1r0.onrender.com",
   "basePath": "/",
   "schemes": [
-    "http",
-    "https"
+    "https",
+    "http"
   ],
   "paths": {
     "/users/": {
