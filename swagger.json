@@ -5,10 +5,10 @@
     "description": "Individual Project 2",
     "version": "1.0.0"
   },
-  "host": "localhost:3000",
+  "host": "project2-i6kb.onrender.com",
   "basePath": "/",
   "schemes": [
-    "http"
+    "https"
   ],
   "paths": {
     "/": {
@@ -30,6 +30,16 @@
           },
           "401": {
             "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/api-docs": {
+      "get": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
           }
         }
       }
