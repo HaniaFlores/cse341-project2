@@ -1,4 +1,4 @@
-const swaggerAutogen = require('swagger-autogen')();
+const swaggerAutogen = require('swagger-autogen')(); 
 
 const dev = {
     info: {
@@ -6,7 +6,19 @@ const dev = {
         description: 'Individual Project 2'
     },
     host: 'localhost:3000',
-    schemes: ['http']
+    schemes: ['http'],
+    components: {
+        securitySchemes: {
+            sessionAuth: {
+                type: 'apiKey',
+                in: 'cookie',
+                name: 'connect.sid'
+            }
+        }
+    },
+    security: [{
+        sessionAuth: []
+    }]
 };
 
 const public = {
@@ -15,11 +27,23 @@ const public = {
         description: 'Individual Project 2'
     },
     host: 'project2-i6kb.onrender.com',
-    schemes: ['https']
+    schemes: ['https'],
+    components: {
+        securitySchemes: {
+            sessionAuth: {
+                type: 'apiKey',
+                in: 'cookie',
+                name: 'connect.sid'
+            }
+        }
+    },
+    security: [{
+        sessionAuth: []
+    }]
 };
 
 const outputFile = './swagger.json';
 const endpointsFiles = ['./routes/index.js'];
 
-//this will generate swagger.json
-swaggerAutogen(outputFile, endpointsFiles, dev);
+// This will generate swagger.json
+swaggerAutogen(outputFile, endpointsFiles, dev); 

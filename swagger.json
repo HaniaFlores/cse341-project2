@@ -2,16 +2,39 @@
   "swagger": "2.0",
   "info": {
     "title": "To-Do App",
-    "description": "To-Do App",
+    "description": "Individual Project 2",
     "version": "1.0.0"
   },
-  "host": "project2-i6kb.onrender.com",
+  "host": "localhost:3000",
   "basePath": "/",
   "schemes": [
-    "https"
+    "http"
   ],
   "paths": {
-    "/users": {
+    "/": {
+      "get": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/profile": {
+      "get": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/users/": {
       "post": {
         "tags": [
           "Users"
@@ -24,6 +47,9 @@
             "schema": {
               "type": "object",
               "properties": {
+                "password": {
+                  "example": "any"
+                },
                 "firstName": {
                   "example": "any"
                 },
@@ -31,9 +57,6 @@
                   "example": "any"
                 },
                 "email": {
-                  "example": "any"
-                },
-                "password": {
                   "example": "any"
                 }
               }
@@ -53,13 +76,16 @@
         "tags": [
           "Users"
         ],
-        "description": "This endpoint gets all users from the database.",
-        "produces": [
-          "application/json"
-        ],
+        "description": "This endpoint gets all users. (Auth required)",
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
@@ -69,10 +95,7 @@
         "tags": [
           "Users"
         ],
-        "description": "This endpoint gets a user by id.",
-        "produces": [
-          "application/json"
-        ],
+        "description": "Gets a user by ID. (Auth required)",
         "parameters": [
           {
             "name": "id",
@@ -84,6 +107,15 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       },
@@ -91,7 +123,7 @@
         "tags": [
           "Users"
         ],
-        "description": "This endpoint updates user information.",
+        "description": "Updates user information. (Auth required)",
         "parameters": [
           {
             "name": "id",
@@ -125,6 +157,12 @@
           "200": {
             "description": "OK"
           },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
           "500": {
             "description": "Internal Server Error"
           }
@@ -134,7 +172,7 @@
         "tags": [
           "Users"
         ],
-        "description": "This endpoint deletes a user.",
+        "description": "Deletes a user. (Auth required)",
         "parameters": [
           {
             "name": "id",
@@ -147,13 +185,19 @@
           "200": {
             "description": "OK"
           },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
           "500": {
             "description": "Internal Server Error"
           }
         }
       }
     },
-    "/tasks": {
+    "/tasks/": {
       "post": {
         "tags": [
           "Tasks"
@@ -197,6 +241,9 @@
           },
           "400": {
             "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
           },
           "500": {
             "description": "Internal Server Error"
@@ -291,6 +338,9 @@
           "400": {
             "description": "Bad Request"
           },
+          "401": {
+            "description": "Unauthorized"
+          },
           "404": {
             "description": "Not Found"
           },
@@ -318,9 +368,26 @@
           },
           "400": {
             "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
           }
         }
       }
     }
-  }
+  },
+  "components": {
+    "securitySchemes": {
+      "sessionAuth": {
+        "type": "apiKey",
+        "in": "cookie",
+        "name": "connect.sid"
+      }
+    }
+  },
+  "security": [
+    {
+      "sessionAuth": []
+    }
+  ]
 }
