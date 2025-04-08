@@ -13,7 +13,10 @@
   "paths": {
     "/": {
       "get": {
-        "description": "",
+        "tags": [
+          "Authentication"
+        ],
+        "description": "This endpoint retrieves the GitHub username.",
         "responses": {
           "200": {
             "description": "OK"
@@ -23,23 +26,16 @@
     },
     "/profile": {
       "get": {
-        "description": "",
+        "tags": [
+          "Authentication"
+        ],
+        "description": "This endpoint retrieves all GitHub user information.",
         "responses": {
           "200": {
             "description": "OK"
           },
           "401": {
             "description": "Unauthorized"
-          }
-        }
-      }
-    },
-    "/api-docs": {
-      "get": {
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
           }
         }
       }
